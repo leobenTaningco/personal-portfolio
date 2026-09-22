@@ -1,6 +1,6 @@
-import Image from "next/image";
 import { Link2, Mail, Phone } from "lucide-react";
 import SectionNav from "./section-nav";
+import LoadingImage from "./loading-image";
 
 const leadStory = {
   section: "Breaking / degree watch",
@@ -89,7 +89,7 @@ export default function Home() {
             <h1 id="lead-title">{leadStory.title}</h1>
             <p className="dek">{leadStory.summary}</p>
             <div className="hero-image-wrap">
-              <Image
+              <LoadingImage
                 src={leadStory.image}
                 alt={leadStory.alt}
                 fill
@@ -103,6 +103,12 @@ export default function Home() {
             <span>Current status</span>
             <strong>Unemployed</strong>
             <span>Available for good work, questionable jokes, and one more feature.</span>
+          </div>
+          <div className="personal-note">
+            <StoryLabel>Personal note</StoryLabel>
+            <p>I&apos;m an aspiring full stack developer, recently graduated with a degree in Computer Science.</p>
+            <span className="personal-note-fact">Dean&apos;s List · June 2026</span>
+            <a className="text-link" href="#contact">CONTACT THE DESK <span aria-hidden="true">→</span></a>
           </div>
           </article>
 
@@ -147,11 +153,11 @@ export default function Home() {
             <p>It started with a simple idea: put a random dog on a GitHub profile. Naturally, manually changing the picture was considered unacceptable. Instead, a small automation system was built to handle the job. A Vercel-hosted serverless API fetches random dog information, processes the response, and uses a hardcoded dog breed for each endpoint. A scheduled cron job then periodically triggers the process, keeping the profile fresh without requiring manual intervention.</p>
             <div className="dog-feed" aria-label="Random dog images">
               <figure>
-                <Image src="https://random-dog-vercel.vercel.app/api/random-borzoi?v=1790042011" alt="Random Borzoi" width={320} height={220} />
+                <LoadingImage src="https://random-dog-vercel.vercel.app/api/random-borzoi?v=1790042011" alt="Random Borzoi" width={320} height={220} />
                 <figcaption>Borzoi</figcaption>
               </figure>
               <figure>
-                <Image src="https://random-dog-vercel.vercel.app/api/random-labrador?v=1790042011" alt="Random Labrador" width={320} height={220} />
+                <LoadingImage src="https://random-dog-vercel.vercel.app/api/random-labrador?v=1790042011" alt="Random Labrador" width={320} height={220} />
                 <figcaption>Labrador</figcaption>
               </figure>
             </div>
@@ -165,7 +171,7 @@ export default function Home() {
             <div className="posture-layout">
               <h3>“SHOCKING! COMPUTER CAN NOW JUDGE YOUR SITTING POSTURE?!”</h3>
               <figure className="posture-figure">
-                <Image src="/portfolio/thesisresults.png" alt="Thesis results table comparing posture detection models" width={620} height={420} />
+                <LoadingImage src="/portfolio/thesisresults.png" alt="Thesis results table comparing posture detection models" width={620} height={420} />
               </figure>
               <div className="posture-copy">
                 <p>How bad can your sitting posture really get? This project is a machine learning pipeline that classifies sitting posture as Good or Bad using side-view images and real-time webcam input. Using MediaPipe Pose, the system detects the ear, shoulder, and hip, then converts their positions into geometric angles, distances, ratios, and alignment features.</p>
@@ -183,7 +189,7 @@ export default function Home() {
             <StoryLabel>Project file 07 / Automation & comics</StoryLabel>
             <div className="webscraper-layout">
               <figure className="webscraper-figure">
-                <Image src="/portfolio/comic.jpg" alt="Comic strip by MarieBiskwit" width={220} height={300} />
+                <LoadingImage src="/portfolio/comic.jpg" alt="Comic strip by MarieBiskwit" width={220} height={300} />
                 <figcaption>by MarieBiskwit</figcaption>
               </figure>
               <div className="webscraper-copy">
@@ -256,7 +262,7 @@ export default function Home() {
             <h2 id="extras-title">PRETENDING TO BE A FUNCTIONING MEMBER OF SOCIETY UNDER THE GUISE OF A 3 MONTH INTERNSHIP</h2>
           </div>
           <figure className="extra-story-image">
-            <Image src="/portfolio/internship.jpg" alt="Internship project image" fill sizes="(min-width: 900px) 35vw, 100vw" />
+            <LoadingImage src="/portfolio/internship.jpg" alt="Internship project image" fill sizes="(min-width: 900px) 35vw, 100vw" />
             <figcaption>Internship report · moodLearning Inc.</figcaption>
           </figure>
           <div className="article-columns extra-story-body">
@@ -298,7 +304,7 @@ export default function Home() {
             </article>
             <article className="certification-card certification-card-cowola">
               <div className="cowola-image-wrap">
-                <Image src="/portfolio/cowola.jpg" alt="Cowola advertisement image" fill sizes="(min-width: 900px) 20vw, 100vw" />
+                <LoadingImage src="/portfolio/cowola.jpg" alt="Cowola advertisement image" fill sizes="(min-width: 900px) 20vw, 100vw" />
               </div>
               <div className="cowola-copy">
                 <StoryLabel>Classified ad</StoryLabel>
