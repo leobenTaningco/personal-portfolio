@@ -176,27 +176,55 @@ a {
 	z-index: 10;
 	display: flex;
 	justify-content: space-between;
-	gap: 1.1rem;
+	gap: 0.45rem;
 	overflow-x: auto;
 	background: var(--paper);
-	padding: 0.8rem 0;
+	padding: 0.55rem 0;
 	white-space: nowrap;
 	border-top: 1px solid var(--ink);
 	border-bottom: 3px double var(--ink);
 }
 
 .section-nav a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	flex: 1 0 auto;
+	min-height: 2.25rem;
+	padding: 0.55rem 0.8rem;
 	color: var(--ink);
+	border: 1px solid transparent;
 	font-weight: 700;
+	transition: background-color 140ms ease, border-color 140ms ease, color 140ms ease, transform 140ms ease;
 }
 
 .section-nav a.is-active {
-	color: var(--accent);
+	color: var(--paper-light);
+	background: var(--ink);
+	border-color: var(--ink);
 }
 
-.section-nav a:hover,
-.section-nav a:focus-visible,
+.section-nav a:hover {
+	color: var(--accent);
+	background: var(--paper-light);
+	border-color: var(--rule);
+	transform: translateY(-1px);
+}
+
+.section-nav a:focus-visible {
+	color: var(--accent);
+	background: var(--paper-light);
+	border-color: var(--accent);
+	outline: 2px solid var(--accent);
+	outline-offset: 2px;
+}
+
+.section-nav a.is-active:hover {
+	color: var(--paper-light);
+	background: var(--accent);
+	border-color: var(--accent);
+}
+
 .text-link:hover,
 .text-link:focus-visible {
 	color: var(--accent);

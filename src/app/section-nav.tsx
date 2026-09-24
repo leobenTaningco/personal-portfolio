@@ -18,23 +18,37 @@ export default function SectionNav() {
     const targets = sections
       .map(({ id }) => document.getElementById(id))
       .filter((section): section is HTMLElement => section !== null);
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible) setActiveSection(visible.target.id);
-      },
-      { rootMargin: "-12% 0px -62%", threshold: [0.1, 0.25, 0.5] },
-    );
-    targets.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
+
+    const updateActiveSection = () => {
+      const marker = window.innerHeight * 0.28;
+      const current = targets
+        .map((section) => ({ id: section.id, top: section.getBoundingClientRect().top }))
+        .filter(({ top }) => top <= marker)
+        .at(-1);
+
+      if (current) {
+        setActiveSection((activeSection) => activeSection === current.id ? activeSection : current.id);
+      }
+    };
+
+    updateActiveSection();
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
+    window.addEventListener("resize", updateActiveSection);
+    return () => {
+      window.removeEventListener("scroll", updateActiveSection);
+      window.removeEventListener("resize", updateActiveSection);
+    };
   }, []);
 
   return (
     <nav className="section-nav" aria-label="Sections">
       {sections.map(({ id, label }) => (
-        <a className={activeSection === id ? "is-active" : undefined} href={`#${id}`} key={id}>
+        <a
+          aria-current={activeSection === id ? "page" : undefined}
+          className={activeSection === id ? "is-active" : undefined}
+          href={`#${id}`}
+          key={id}
+        >
           {label}
         </a>
       ))}
